@@ -127,9 +127,10 @@ impl Daemon {
         }
 
         let network_info = rpc.get_network_info()?;
-        if network_info.version < 21_00_00 {
-            bail!("electrs requires bitcoind 0.21+");
-        }
+        debug!("network_info.version: {}", network_info.version);
+        // if network_info.version < 21_00_00 {
+        //     bail!("electrs requires bitcoind 0.21+");
+        // }
         if !network_info.network_active {
             bail!("electrs requires active bitcoind p2p network");
         }
